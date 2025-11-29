@@ -1,6 +1,7 @@
+
 /* accelerometer.h
- * Simplified LSM303DLHC driver for STM32F411E-DISCO
- * Fixed config: 100Hz, ±8g, high-res
+ * LSM303DLHC (the on board accelerometer) driver for STM32
+ * setting up with 100Hz, ±8g, high-res
  * Daphne Felt - ECEN 5613
  */
 
@@ -10,15 +11,14 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// Accelerometer data structure (raw values)
+// will have the x, y, z data in terms of g's
 typedef struct {
-    int16_t x;
-    int16_t y;
-    int16_t z;
+    float x;
+    float y;
+    float z;
 } AccelRawData;
 
-// Function prototypes
-bool Accel_Init(void);              // Initialize I2C and accelerometer
-void Accel_ReadRaw(AccelRawData *data);  // Read X, Y, Z values
+bool Accel_Init(void);
+void Accel_ReadRaw(AccelRawData *data);
 
-#endif // ACCELEROMETER_H
+#endif
